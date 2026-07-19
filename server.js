@@ -204,13 +204,11 @@ req.session.verificationCode = verificationCode;
 req.session.codeExpires = Date.now() + (5 * 60 * 1000);
 
 console.log("Tentando enviar código de verificação...");
+
 await transporter.sendMail({
-console.log("Código de verificação enviado com sucesso.");
 
     from: `"CTL ORION" <${process.env.EMAIL_USER}>`,
-
     to: admin.email,
-
     subject: "Código de acesso ao CTL ORION",
 
     text: `
@@ -224,6 +222,8 @@ Se você não tentou acessar o ORION, ignore este e-mail.
     `
 
 });
+
+console.log("Código de verificação enviado com sucesso.");
 
 
 res.json({
