@@ -203,9 +203,9 @@ req.session.pendingEmail = admin.email;
 req.session.verificationCode = verificationCode;
 req.session.codeExpires = Date.now() + (5 * 60 * 1000);
 
-
-// Envia o código por e-mail
+console.log("Tentando enviar código de verificação...");
 await transporter.sendMail({
+console.log("Código de verificação enviado com sucesso.");
 
     from: `"CTL ORION" <${process.env.EMAIL_USER}>`,
 
