@@ -1,0 +1,591 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:#020202;
+
+    color:white;
+
+    overflow:hidden;
+
+    height:100vh;
+
+}
+
+/* Fundo */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+/* Satélite */
+
+.satellite{
+
+    position:absolute;
+
+    width:1200px;
+
+    right:-250px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    opacity:.18;
+
+    pointer-events:none;
+
+    user-select:none;
+
+}
+
+/* Centraliza */
+
+.login{
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    padding-right:90px;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+/* Card */
+
+.login-card{
+
+    width:520px;
+
+    padding:65px;
+
+    background:rgba(10,10,10,.38);
+
+    backdrop-filter:blur(28px);
+
+    -webkit-backdrop-filter:blur(28px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        0 0 0 1px rgba(255,255,255,.03) inset;
+
+    animation:cardFade 1.2s ease;
+
+}
+
+/* Texto */
+
+.subtitle{
+
+    color:rgba(255,255,255,.45);
+
+    font-size:13px;
+
+    letter-spacing:8px;
+
+    margin-bottom:16px;
+
+    text-transform:uppercase;
+
+}
+
+.login-card h1{
+
+    font-size:56px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    margin-bottom:8px;
+
+}
+
+.description{
+
+    display:block;
+
+    color:#a8a8a8;
+
+    line-height:1.6;
+
+    margin-bottom:40px;
+
+}
+
+/* Form */
+
+label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#cfcfcf;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-bottom:24px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#0b0b0b;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+input:focus{
+
+    border-color:white;
+
+}
+
+/* Botão */
+
+button{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:white;
+
+    color:black;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 20px 40px rgba(255,255,255,.18);
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+.background{
+    position: fixed;
+    inset: 0;
+
+    background: url("../assets/images/orbital-background.jpg") center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+}
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+/* ---------- INPUTS ---------- */
+
+.input-group{
+
+    margin-bottom:24px;
+
+}
+
+.input-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    transition:.3s;
+
+}
+
+.input-box:hover{
+
+    border-color:rgba(255,255,255,.15);
+
+}
+
+.input-box:focus-within{
+
+    border-color:rgba(255,255,255,.35);
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.icon{
+
+    font-size:18px;
+
+    opacity:.7;
+
+}
+
+.input-box input{
+
+    flex:1;
+
+    background:none;
+
+    border:none;
+
+    margin:0;
+
+    padding:18px 0;
+
+}
+
+.input-box input:focus{
+
+    border:none;
+
+    outline:none;
+
+}
+/* HUD */
+
+.hud{
+
+    position:fixed;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    color:rgba(255,255,255,.45);
+
+    z-index:5;
+
+}
+
+.hud-title{
+
+    color:white;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    margin-bottom:8px;
+
+}
+
+.top-left{
+
+    top:40px;
+
+    left:40px;
+
+}
+
+.top-right{
+
+    top:40px;
+
+    right:40px;
+
+    text-align:right;
+
+}
+
+.bottom-left{
+
+    bottom:40px;
+
+    left:40px;
+
+}
+
+.bottom-right{
+
+    bottom:40px;
+
+    right:40px;
+
+    text-align:right;
+
+}
+
+.online{
+
+    color:#79ff79;
+
+    animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+    }
+
+}
+/* ============================
+   ORBIT CAMERA
+============================ */
+
+.background{
+
+    animation:orbitCamera 60s ease-in-out infinite alternate;
+
+}
+
+@keyframes orbitCamera{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.05);
+
+    }
+
+}
+.ctl-description{
+
+    margin-top:-8px;
+
+    margin-bottom:35px;
+
+    font-size:13px;
+
+    color:rgba(255,255,255,.45);
+
+    letter-spacing:2px;
+
+}
+.station-id{
+
+    position:fixed;
+
+    top:35px;
+
+    left:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+    z-index:50;
+
+}
+
+.station-id span{
+
+    color:white;
+
+    font-size:13px;
+
+    letter-spacing:3px;
+
+}
+
+.station-id small{
+
+    color:rgba(255,255,255,.45);
+
+    font-size:12px;
+
+}
+/* ===========================
+   TOP BAR
+=========================== */
+
+.topbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:28px 40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:100;
+
+}
+
+.brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.brand-name{
+
+    color:white;
+
+    font-size:16px;
+
+    letter-spacing:5px;
+
+    font-weight:600;
+
+}
+
+.brand-version{
+
+    color:rgba(255,255,255,.45);
+
+    font-size:12px;
+
+}
+
+.connection{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:rgba(255,255,255,.55);
+
+    font-size:13px;
+
+}
+
+.dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#53ff7a;
+
+    box-shadow:0 0 15px #53ff7a;
+
+    animation:pulse 2s infinite;
+
+}
+@keyframes cardFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

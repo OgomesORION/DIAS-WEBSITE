@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ORION • Feedbacks</title>
+
+    <link rel="stylesheet" href="css/feedbacks.css">
+
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="logo">
+
+            <h2>ORION</h2>
+            <span>CTL • Feedback Center</span>
+
+        </div>
+
+        <div class="status">
+
+    <span class="status-dot"></span>
+
+    Online
+
+    <button id="logoutBtn" type="button">
+        Sair
+    </button>
+
+</div>
+
+    </header>
+
+    <main class="container">
+
+        <div class="page-title">
+
+            <h1>Feedbacks</h1>
+
+            <p>Gerencie sugestões, bugs e ideias enviadas pelos usuários do DIAS.</p>
+
+        </div>
+
+        <section class="filters">
+
+            <button class="active">Todos</button>
+            <button>Bugs</button>
+            <button>Sugestões</button>
+            <button>Ideias</button>
+            <button>Elogios</button>
+
+        </section>
+
+        <section class="feedback-list">
+
+          <div class="feedback-card">
+
+    <div class="feedback-header">
+
+        <span class="tag suggestion">Sugestão</span>
+
+        <span class="date">16/07/2026 • 15:30</span>
+
+    </div>
+
+    <h3>Adicionar modo escuro automático</h3>
+
+    <p>
+        Seria interessante que o DIAS acompanhasse automaticamente o tema do sistema operacional.
+    </p>
+
+    <button class="view-btn">Visualizar</button>
+
+</div>
+        </section>
+
+    </main>
+    <div class="modal" id="feedbackModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Feedback</h2>
+
+            <button class="close-modal">&times;</button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <span class="tag suggestion">Sugestão</span>
+
+            <h3>Adicionar modo escuro automático</h3>
+
+            <p>
+                Seria interessante que o DIAS acompanhasse automaticamente
+                o tema do sistema operacional, alternando entre claro e escuro
+                conforme as configurações do usuário.
+            </p>
+
+            <small>Enviado em 16/07/2026 às 15:30</small>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/feedbacks.js"></script>
+
+</body>
+
+</html>
