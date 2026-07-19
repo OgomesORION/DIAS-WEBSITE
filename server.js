@@ -131,6 +131,21 @@ app.post("/api/login", async (req, res) => {
     try {
 
         const { email, password } = req.body;
+        console.log("=== DIAGNÓSTICO LOGIN ===");
+console.log("Email recebido:", email);
+console.log("ADMIN1_EMAIL carregado:", !!process.env.ADMIN1_EMAIL);
+console.log(
+    "Email corresponde ao ADMIN1:",
+    email?.toLowerCase() === process.env.ADMIN1_EMAIL?.toLowerCase()
+);
+console.log(
+    "Hash ADMIN1 carregado:",
+    !!process.env.ADMIN1_PASSWORD_HASH
+);
+console.log(
+    "Hash ADMIN1 começa corretamente:",
+    process.env.ADMIN1_PASSWORD_HASH?.startsWith("$2")
+);
 
         const admins = [
 
