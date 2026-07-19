@@ -180,6 +180,8 @@ console.log(
             password,
             admin.passwordHash
         );
+        console.log("Senha corresponde ao hash:", validPassword);
+    
 
         if (!validPassword) {
 
