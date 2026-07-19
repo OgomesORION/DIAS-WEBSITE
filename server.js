@@ -41,6 +41,10 @@ if (!fs.existsSync(FEEDBACKS_FILE)) {
 
 // Permite receber JSON
 app.use(express.json());
+
+// Necessário para cookies seguros atrás do proxy do Railway
+app.set("trust proxy", 1);
+
 app.use(session({
 
     secret: process.env.SESSION_SECRET,
