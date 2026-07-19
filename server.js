@@ -19,12 +19,22 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_APP_PASSWORD
     }
 });
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, "data");
+
 const FEEDBACKS_FILE = path.join(
-    __dirname,
-    "data",
+    DATA_DIR,
     "feedbacks.json"
 );
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+}
 
+if (!fs.existsSync(FEEDBACKS_FILE)) {
+    fs.writeFileSync(
+        FEEDBACKS_FILE,
+        JSON.stringify([], null, 2)
+    );
+}
 
 // Permite receber JSON
 app.use(express.json());
