@@ -138,22 +138,6 @@ app.post("/api/login", async (req, res) => {
     try {
 
         const { email, password } = req.body;
-        console.log("=== DIAGNÓSTICO LOGIN ===");
-console.log("Email recebido:", email);
-console.log("ADMIN1_EMAIL carregado:", !!process.env.ADMIN1_EMAIL);
-console.log(
-    "Email corresponde ao ADMIN1:",
-    email?.toLowerCase() === process.env.ADMIN1_EMAIL?.toLowerCase()
-);
-console.log(
-    "Hash ADMIN1 carregado:",
-    !!process.env.ADMIN1_PASSWORD_HASH
-);
-console.log(
-    "Hash ADMIN1 começa corretamente:",
-    process.env.ADMIN1_PASSWORD_HASH?.startsWith("$2")
-);
-
         const admins = [
 
             {
@@ -182,14 +166,10 @@ console.log(
             });
 
         }
-
         const validPassword = await bcrypt.compare(
             password,
             admin.passwordHash
         );
-        console.log("Senha corresponde ao hash:", validPassword);
-    
-
         if (!validPassword) {
 
             return res.status(401).json({
@@ -209,9 +189,6 @@ const verificationCode = Math.floor(
 req.session.pendingEmail = admin.email;
 req.session.verificationCode = verificationCode;
 req.session.codeExpires = Date.now() + (5 * 60 * 1000);
-
-console.log("Tentando enviar código de verificação via Resend...");
-
 const { data, error } = await resend.emails.send({
     from: "CTL ORION <onboarding@resend.dev>",
     to: [admin.email],
@@ -228,11 +205,8 @@ Se você não tentou acessar o ORION, ignore este e-mail.
 });
 
 if (error) {
-    console.error("Erro Resend:", error);
     throw new Error("Falha ao enviar código de verificação.");
 }
-
-console.log("Código enviado com sucesso via Resend.");
 res.json({
     success: true,
     requiresVerification: true
