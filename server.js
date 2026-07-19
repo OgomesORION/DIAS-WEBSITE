@@ -7,6 +7,9 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
 
@@ -203,14 +206,12 @@ req.session.pendingEmail = admin.email;
 req.session.verificationCode = verificationCode;
 req.session.codeExpires = Date.now() + (5 * 60 * 1000);
 
-console.log("Tentando enviar código de verificação...");
+console.log("Tentando enviar código de verificação via Resend...");
 
-await transporter.sendMail({
-
-    from: `"CTL ORION" <${process.env.EMAIL_USER}>`,
-    to: admin.email,
+const { data, error } = await resend.emails.send({
+    from: "CTL ORION <onboarding@resend.dev>",
+    to: [admin.email],
     subject: "Código de acesso ao CTL ORION",
-
     text: `
 Seu código de acesso ao CTL ORION é:
 
@@ -220,12 +221,14 @@ Este código expira em 5 minutos.
 
 Se você não tentou acessar o ORION, ignore este e-mail.
     `
-
 });
 
-console.log("Código de verificação enviado com sucesso.");
+if (error) {
+    console.error("Erro Resend:", error);
+    throw new Error("Falha ao enviar código de verificação.");
+}
 
-
+console.log("Código enviado com sucesso via Resend.");
 res.json({
     success: true,
     requiresVerification: true
